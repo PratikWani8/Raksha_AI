@@ -25,7 +25,7 @@ Raksha helps users, especially women, to stay safe by enabling real-time emergen
 ### 🤖 A.I Features
 - A.I Powered Heatmap
 - Safest Route Navigation
- 
+
 ### 🛡 Admin Features
 - Admin Login System
 - View Live SOS Alerts
@@ -67,7 +67,7 @@ Raksha helps users, especially women, to stay safe by enabling real-time emergen
 - Geolocation API
 - Web Speech API
 
-### Algorithm
+### Algorithms
 - Haversine Algorithm - Distance Calculation
 - Linear Search - Nearest Location Finding
 - Graph Shortest Path - Routing Algorithm (A*)

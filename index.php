@@ -65,13 +65,13 @@
     <div class="badge">💖 Trusted by 10,000+ Women</div>
 
     <h1>
-      Your Personal Safety <br>
-      <span>Protection</span><br>
+      Your Personal Smart<br>
+      <span>Safety Protection</span><br>
       Companion.
     </h1>
 
     <p>
-      A smart platform for women to report safety incidents, send emergency SOS alerts,
+      A smart A.I based platform for women to report safety incidents, send emergency SOS alerts,
       and track complaint status securely.
     </p>
 

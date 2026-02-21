@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "women_safety");
+$conn = new mysqli("localhost", "root", "", "raksha_ai");
 if ($conn->connect_error) {
     die("Database Connection Failed");
 }

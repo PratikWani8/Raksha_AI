@@ -44,3 +44,15 @@ CREATE TABLE non_reg_sos (
     message TEXT,
     sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE heatmap_data (
+    heatmap_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    latitude DECIMAL(10,8),
+    longitude DECIMAL(11,8),
+    risk_score FLOAT DEFAULT 0,
+    incident_count INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE SET NULL
+);

@@ -25,6 +25,7 @@ Raksha helps users, especially women, to stay safe by enabling real-time emergen
 ### 🤖 A.I Features
 - A.I Powered Heatmap
 - Safest Route Navigation
+- Personal Chatbot
 
 ### 🛡 Admin Features
 - Admin Login System

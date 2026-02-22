@@ -74,10 +74,5 @@ Raksha helps users, especially women, to stay safe by enabling real-time emergen
 
 ---
 
-## 👨‍💻 Author
-**[Pratik Wani](https://github.com/PratikWani8)**
-
----
-
 ## ⭐ Support
 If you found this project helpful, consider giving it a star ⭐ on GitHub!

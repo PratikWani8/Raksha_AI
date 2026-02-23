@@ -30,7 +30,134 @@ $username = $user['name'];
 <meta property="og:title" content="Raksha - Women Safety & Emergency Protection System">
 <meta property="og:description" content="Smart platform for women's safety with instant SOS alerts, live tracking, and police support.">
 <meta name="theme-color" content="#e91e63">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <link rel="icon" href="../assets/favicon.jpg" type="image/x-icon" />
+
+<style>
+
+.chat-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #e91e63;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+    z-index: 9999;
+    transition: transform 0.3s;
+}
+
+.chat-toggle-btn:hover { transform: scale(1.1); }
+
+.chatbot-wrapper {
+    display: none;
+    position: fixed;
+    bottom: 95px;
+    right: 20px; 
+    width: 320px;
+    height: 450px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+    animation: slideUp 0.3s ease-out;
+    font-family: sans-serif;
+}
+
+.chat-header {
+    background: #e91e63;
+    color: white;
+    padding: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat-content {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #fdf2f5;
+}
+
+.msg {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    max-width: 80%;
+    font-size: 14px;
+    animation: messageFade 0.3s ease-on;
+}
+
+.bot-msg { background: #fff; border: 1px solid #eee; align-self: flex-start; }
+.user-msg { background: #e91e63; color: white; align-self: flex-end; margin-left: auto; }
+
+.chat-input-area {
+    display: flex;
+    align-items: center; 
+    padding: 12px;
+    background: white;
+    border-top: 1px solid #eee;
+    gap: 8px; 
+}
+
+.chat-input-area input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 25px; 
+    outline: none;
+    font-size: 14px;
+    transition: border 0.3s;
+}
+
+.chat-input-area input:focus {
+    border-color: #e91e63;
+}
+
+.send-btn {
+    background: #e91e63;
+    color: white;
+    border: none;
+    border-radius: 50%; 
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(233, 30, 99, 0.3);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.send-btn:hover {
+    background: #d81b60;
+    transform: scale(1.05);
+}
+
+.send-btn svg {
+    margin-left: 3px; 
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px) scale(0.9); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes messageFade {
+    from { opacity: 0; transform: translateX(10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+</style>
+
 </head>
 <body>
 <header>
@@ -50,5 +177,28 @@ $username = $user['name'];
     <a href="../ai/safe_route.php"><button>🛣 Safe Route Navigation</button></a>
     <a href="../auth/logout.php"><button>🚪 Logout</button></a>
 </div>
+
+<div id="chat-container" class="chatbot-wrapper">
+    <div class="chat-header">
+        <span>🤖 Raksha AI</span>
+        
+    </div>
+    <div id="chat-box" class="chat-content" style="display: flex; flex-direction: column;">
+        <div class="msg bot-msg">Hello! I am Raksha Your Personal Smart Safety Companion.</div>
+    </div>
+    <div class="chat-input-area">
+    <input type="text" id="user-input" placeholder="Type here..." onkeypress="if(event.key==='Enter') sendMessage()">
+    <button class="send-btn" onclick="sendMessage()">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+            <path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+        </svg>
+    </button>
+</div>
+</div>
+
+<button class="chat-toggle-btn" onclick="toggleChat()">🤖</button>
+
+<script src="../ai/chatbot.js"></script>
+
 </body>
 </html>

@@ -66,7 +66,7 @@
     </div>
 
     <h1>
-      Essential <span>Safety Tips</span><br>
+      Essential <span style="font-family: 'Audiowide', cursive;">Safety Tips</span><br>
       for Women
     </h1>
 

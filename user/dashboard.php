@@ -146,6 +146,62 @@ $username = $user['name'];
     margin-left: 3px; 
 }
 
+.mic-btn {
+    background: #fff;
+    color: #e91e63;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.mic-btn:hover {
+    background: #fce4ec;
+    transform: scale(1.05);
+}
+
+/* 🎤 Listening animation */
+.mic-btn.listening {
+    background: #e91e63;
+    color: white;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* 📱 Responsive Chat */
+@media (max-width: 480px) {
+    .chatbot-wrapper {
+        width: 95%;
+        height: 80%;
+        right: 2.5%;
+        bottom: 80px;
+    }
+
+    .chat-input-area {
+        padding: 8px;
+    }
+
+    .chat-input-area input {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+
+    .send-btn, .mic-btn {
+        width: 36px;
+        height: 36px;
+    }
+}
+
 @keyframes slideUp {
     from { opacity: 0; transform: translateY(20px) scale(0.9); }
     to { opacity: 1; transform: translateY(0) scale(1); }
@@ -188,6 +244,11 @@ $username = $user['name'];
     </div>
     <div class="chat-input-area">
     <input type="text" id="user-input" placeholder="Type here..." onkeypress="if(event.key==='Enter') sendMessage()">
+    <button class="mic-btn" onclick="startVoiceInput()">
+    <svg viewBox="0 0 24 24" width="22" height="22">
+        <path fill="currentColor" d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 14 0h-2zm-5 8a7 7 0 0 0 7-7h-2a5 5 0 0 1-10 0H5a7 7 0 0 0 7 7z"/>
+    </svg>
+</button>
     <button class="send-btn" onclick="sendMessage()">
         <svg viewBox="0 0 24 24" width="24" height="24">
             <path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>

@@ -28,6 +28,52 @@ function addMessage(text, type) {
     if (type === 'bot') speak(text);
 }
 
+// voice input
+function startVoiceInput() {
+    const micBtn = document.querySelector('.mic-btn');
+
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+
+    recognition.lang = "en-IN";
+    recognition.interimResults = false;
+
+    micBtn.classList.add("listening");
+
+    recognition.start();
+
+    recognition.onresult = function(event) {
+        const text = event.results[0][0].transcript;
+        document.getElementById("user-input").value = text;
+        micBtn.classList.remove("listening");
+        sendMessage();
+    };
+
+    recognition.onerror = function(event) {
+    console.log("Speech Error:", event.error);
+
+    let msg = "❌ Voice recognition failed.";
+
+    if (event.error === "not-allowed") {
+        msg = "❌ Microphone permission denied.";
+    }
+    else if (event.error === "no-speech") {
+        msg = "❌ No speech detected. Try again.";
+    }
+    else if (event.error === "audio-capture") {
+        msg = "❌ No microphone found.";
+    }
+    else if (event.error === "network") {
+        msg = "❌ Network error.";
+    }
+
+    addMessage(msg, "bot");
+};
+
+    recognition.onend = function() {
+        micBtn.classList.remove("listening");
+    };
+}
+
 //  SOS 
 async function handleSOS() {
     addMessage("🚨 Sending SOS...", "bot");
@@ -65,11 +111,9 @@ function findNearbyPolice() {
             const lat = position.coords.latitude;
             const lng = position.coords.longitude;
 
-            // Radius in meters (10 km)
             const radius = 10000;
 
             try {
-                // Overpass API query
                 const query = `
                 [out:json];
                 node["amenity"="police"](around:${radius},${lat},${lng});
@@ -88,9 +132,8 @@ function findNearbyPolice() {
                     return;
                 }
 
-                // Distance calculation (Haversine formula)
                 function getDistance(lat1, lon1, lat2, lon2) {
-                    const R = 6371; // Earth radius in km
+                    const R = 6371; 
                     const dLat = (lat2 - lat1) * Math.PI / 180;
                     const dLon = (lon2 - lon1) * Math.PI / 180;
 
@@ -104,7 +147,6 @@ function findNearbyPolice() {
                     return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
                 }
 
-                // Map and sort stations by distance
                 const stations = data.elements.map(p => {
                     const distance = getDistance(lat, lng, p.lat, p.lon);
                     return {
@@ -115,7 +157,6 @@ function findNearbyPolice() {
                     };
                 }).sort((a, b) => a.distance - b.distance);
 
-                // Show top 3 nearest
                 let message = "🚔 Nearest Police Stations (within 10 km):\n";
 
                 stations.slice(0, 3).forEach((s, i) => {

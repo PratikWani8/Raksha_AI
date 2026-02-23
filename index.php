@@ -66,7 +66,7 @@
 
     <h1>
       Your Personal Smart<br>
-      <span>Safety Protection</span><br>
+      <span style="font-family: 'Audiowide', cursive;">Safety Protection</span><br>
       Companion.
     </h1>
 
@@ -137,7 +137,7 @@
     <div class="why-card">
       <div class="icon">💖</div>
       <h3>Women Empowerment</h3>
-      <p>Helping women feel safe, confident, and empowered in daily life.</p>
+      <p>Helping women feel safe, confident, and empowered in daily life using ai.</p>
     </div>
 
   </div>

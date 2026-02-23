@@ -74,7 +74,7 @@
   </div>
 
   <h1>
-    Nearby <span>Police Help</span><br>
+    Nearby <span style="font-family: 'Audiowide', cursive;">Police Help</span><br>
     Anytime You Need
   </h1>
 

@@ -185,7 +185,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])) {
         gap: 10px;
         cursor: pointer;
     }
-
+    
+    .google-btn:hover {
+        background: #f7f7f7;
+    }
+    
     .google-icon {
         width: 18px;
     }

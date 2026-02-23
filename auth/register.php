@@ -1,6 +1,34 @@
 <?php
 include("../config/db.php");
+
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])) {
+
+    //  Cloudflare Turnstile verification
+    $secretKey = "secret-key";
+    $token = $_POST['cf-turnstile-response'] ?? '';
+
+    if (empty($token)) {
+        echo "<script>alert('Please verify you are human');</script>";
+        exit();
+    }
+
+    $verify = file_get_contents("https://challenges.cloudflare.com/turnstile/v0/siteverify", false, stream_context_create([
+        'http' => [
+            'method'  => 'POST',
+            'header'  => "Content-type: application/x-www-form-urlencoded",
+            'content' => http_build_query([
+                'secret' => $secretKey,
+                'response' => $token
+            ])
+        ]
+    ]));
+
+    $responseData = json_decode($verify);
+
+    if (!$responseData->success) {
+        echo "<script>alert('Human verification failed');</script>";
+        exit();
+    }
 
     $name  = trim($_POST['name']);
     $email = trim($_POST['email']);
@@ -44,8 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])) {
 
             $check->close();
 
-            /* ========== REGISTER USER ========== */
-
             $password = password_hash($pass, PASSWORD_DEFAULT);
 
             $stmt = $conn->prepare("
@@ -56,7 +82,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])) {
             $stmt->bind_param("ssss", $name, $email, $phone, $password);
 
             if ($stmt->execute()) {
-
 
                 $_SESSION['user_id'] = $stmt->insert_id;
 
@@ -73,6 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,22 +107,89 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- META TAGS -->
-    <meta name="title" content="Raksha - Women Safety & Emergency Protection System">
-    <meta name="description" content="Raksha is a smart women safety platform for SOS alerts, emergency support, live location sharing, and nearby police assistance. Stay safe, stay empowered.">
+    <!--  Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
-    <meta name="keywords" content="women safety, SOS alert system, emergency help for women, Raksha safety app, women security platform">
-    <meta name="author" content="Raksha Team">
-    <meta name="robots" content="index, follow">
+    <!--  Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Raksha - Women Safety & Emergency Protection System">
-    <meta property="og:description" content="Smart platform for women's safety with instant SOS alerts, live tracking, and police support">
+        const firebaseConfig = {
+             apiKey: "",
+            authDomain: "",
+            projectId: "",
+            appId: ""
+        };
 
-    <meta name="theme-color" content="#e91e63">
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+
+        window.googleSignup = function () {
+            signInWithPopup(auth, provider)
+            .then((result) => {
+                const user = result.user;
+
+                fetch("firebase_register.php", {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({
+                        name: user.displayName,
+                        email: user.email
+                    })
+                })
+                .then(() => {
+                    window.location.href = "../user/dashboard.php";
+                });
+            })
+            .catch((error) => {
+                alert("Google Signup Failed");
+                console.error(error);
+            });
+        };
+    </script>
 
     <link rel="icon" href="../assets/favicon.jpg" type="image/x-icon" />
     <link rel="stylesheet" href="../style.css">
+
+    <style>
+    .divider {
+        display: flex;
+        align-items: center;
+        margin: 15px 0;
+    }
+
+    .divider::before,
+    .divider::after {
+        content: '';
+        flex: 1;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .divider span {
+        padding: 0 10px;
+        font-size: 14px;
+        color: #666;
+    }
+
+    .google-btn {
+        width: 100%;
+        background: #fff;
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        cursor: pointer;
+    }
+
+    .google-icon {
+        width: 18px;
+    }
+    </style>
 </head>
 
 <body>
@@ -126,7 +219,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])) {
         <label>Confirm Password</label>
         <input type="password" name="confirm_password" placeholder="Re-enter password" required>
 
+        <!-- Turnstile -->
+        <div class="cf-turnstile" data-sitekey="site-key"></div>
+
         <button type="submit" name="register">Register</button>
+
+        <div class="divider">
+            <span>OR Sign up with</span>
+        </div>
+
+        <!-- Google Signup -->
+        <button type="button" class="google-btn" onclick="googleSignup()">
+            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" class="google-icon">
+            Sign up with Google
+        </button>
 
         <p style="text-align:center; margin-top:15px;">
             Already registered?
@@ -136,14 +242,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['register'])) {
     </form>
 
 </div>
-
-<script>
-document.querySelector("form").addEventListener("submit", () => {
-    const btn = document.querySelector("button");
-    btn.innerText = "Registering...";
-    btn.style.opacity = "0.8";
-});
-</script>
 
 </body>
 </html>

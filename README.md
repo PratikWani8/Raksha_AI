@@ -64,6 +64,10 @@ Raksha helps users, especially women, to stay safe by enabling real-time emergen
 - Chart.js
 - Swiper.js
 
+### Authentication
+- Firebase
+- Cloudflare
+
 ### APIs
 - Geolocation API
 - Web Speech API

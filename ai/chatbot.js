@@ -74,32 +74,42 @@ function startVoiceInput() {
     };
 }
 
-//  SOS 
+// SOS 
 async function handleSOS() {
-    addMessage("🚨 Sending SOS...", "bot");
+    addMessage("🚨 Initiating Emergency Protocol. Accessing GPS...", "bot");
+    
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async (position) => {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            const locationString = `Lat: ${lat}, Lng: ${lng}`;
+            
+            const formData = new FormData();
+            formData.append('send', 'true');
+            formData.append('location', locationString);
+            formData.append('msg', 'SOS triggered via Raksha AI Chatbot');
 
-    navigator.geolocation.getCurrentPosition(async (pos) => {
-        const lat = pos.coords.latitude;
-        const lng = pos.coords.longitude;
+            try {
+                const response = await fetch('send_sos.php', {
+                    method: 'POST',
+                    body: formData
+                });
 
-        const formData = new FormData();
-        formData.append('location', lat + "," + lng);
-
-        try {
-            const res = await fetch('send_sos.php', {
-                method: 'POST',
-                body: formData
-            });
-
-            if (res.ok) {
-                addMessage("✅ SOS Alert sent to Authorities! Help is being dispatched to your locations.", "bot");
-            } else {
-                addMessage("⚠️ Alert logged locally, but server communication failed.", "bot");
+                if (response.ok) {
+                    addMessage("✅ SOS Alert sent to authorities! Help is being dispatched to your location.", "bot");
+                } else {
+                    addMessage("⚠️ Alert logged locally, but server communication failed.", "bot");
+                }
+            } catch (error) {
+                addMessage("❌ Connection error. Please use the physical SOS button!", "bot");
             }
-        } catch {
-            addMessage("❌ Network error.", "bot");
-        }
-    });
+
+        }, (error) => {
+            addMessage("❌ Location access denied. I cannot send an accurate SOS without GPS.", "bot");
+        });
+    } else {
+        addMessage("❌ Geolocation is not supported by this browser.", "bot");
+    }
 }
 
 // Find Nearby Police within 10 KM 

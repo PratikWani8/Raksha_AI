@@ -165,7 +165,6 @@ $username = $user['name'];
     transform: scale(1.05);
 }
 
-/* 🎤 Listening animation */
 .mic-btn.listening {
     background: #e91e63;
     color: white;
@@ -178,7 +177,6 @@ $username = $user['name'];
     100% { transform: scale(1); }
 }
 
-/* 📱 Responsive Chat */
 @media (max-width: 480px) {
     .chatbot-wrapper {
         width: 95%;
@@ -231,6 +229,7 @@ $username = $user['name'];
     <a href="view_status.php"><button>📄 View Complaint Status</button></a>
     <a href="../ai/ai_heatmap.php"><button>🔥 AI Heatmap</button></a>
     <a href="../ai/safe_route.php"><button>🛣 Safe Route Navigation</button></a>
+     <a href="../ai/ai_fir_gen.php"><button>🧾 FIR Auto Generator</button></a>
     <a href="../auth/logout.php"><button>🚪 Logout</button></a>
 </div>
 

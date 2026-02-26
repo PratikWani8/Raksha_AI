@@ -175,7 +175,6 @@ function findNearbyPolice() {
 
                 addMessage(message, "bot");
 
-                // Open nearest station in Google Maps
                 const nearest = stations[0];
                 const url = `https://www.google.com/maps/dir/?api=1&destination=${nearest.lat},${nearest.lon}`;
                 window.open(url, "_blank");

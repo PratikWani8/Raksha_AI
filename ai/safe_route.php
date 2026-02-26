@@ -55,17 +55,14 @@ if (!isset($_SESSION['user_id'])) {
 
 <script>
 
-// ================= MAP =================
 var map = L.map('map').setView([18.5204, 73.8567], 12);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution:'© OpenStreetMap'
 }).addTo(map);
 
-// ================= DATA =================
 let dangerZones = [];
 
-// ================= LOAD DATA =================
 fetch("get_heatmap_data.php")
 .then(res => res.json())
 .then(data => {
@@ -78,7 +75,6 @@ fetch("get_heatmap_data.php")
 
 });
 
-// ================= HEATMAP =================
 function drawHeatmap(){
 
   let heatPoints = dangerZones.map(p => [
@@ -98,7 +94,6 @@ function drawHeatmap(){
   }).addTo(map);
 }
 
-// ================= CIRCLES =================
 function drawDangerCircles(){
 
   dangerZones.forEach(p => {
@@ -117,7 +112,7 @@ function drawDangerCircles(){
   });
 }
 
-// ================= AI MODEL =================
+//  AI MODEL 
 let model;
 
 async function initAI(){
@@ -151,7 +146,6 @@ async function initAI(){
   console.log("AI Ready");
 }
 
-// ================= PREDICT =================
 function predictRisk(lat, lng){
 
   if(!model) return 0;
@@ -162,7 +156,6 @@ function predictRisk(lat, lng){
   return pred.dataSync()[0];
 }
 
-// ================= CHECK SAFE =================
 function isRouteSafe(coords){
 
   for(let i=0;i<coords.length;i+=5){
@@ -177,7 +170,6 @@ function isRouteSafe(coords){
   return true;
 }
 
-// ================= FIND DANGER =================
 function findDangerPoint(coords){
 
   for(let i=0;i<coords.length;i+=5){
@@ -195,7 +187,6 @@ function findDangerPoint(coords){
   return null;
 }
 
-// ================= DETOUR =================
 function createDetour(point){
 
   return L.latLng(
@@ -204,7 +195,6 @@ function createDetour(point){
   );
 }
 
-// ================= GEOCODE =================
 async function geocode(place){
 
   let res = await fetch("geocode.php?place=" + encodeURIComponent(place));
@@ -218,7 +208,6 @@ async function geocode(place){
   return L.latLng(data[0].lat, data[0].lon);
 }
 
-// ================= ROUTING =================
 let control;
 
 function getRoute(start, end, isReroute=false, detour=null){
@@ -266,7 +255,6 @@ function getRoute(start, end, isReroute=false, detour=null){
   });
 }
 
-// ================= FIND ROUTE =================
 async function findRoute(){
 
   let start = document.getElementById("start").value;

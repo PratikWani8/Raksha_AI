@@ -114,5 +114,46 @@ can monitor SOS alerts in real-time and take quick action.
 
 ---
 
+## ✨ Features  
+
+### 👩 User Features  
+- User Registration & Login  
+- Shake-to-SOS Detection  
+- One Click SOS  
+- Share Live Location  
+- Nearby Police Stations Finder  
+- Report Complaints  
+- View Complaint Status  
+- Secure Logout System  
+
+### 🤖 AI Features  
+- AI Powered Heatmap for Crime Analysis  
+- Safest Route Navigation (Shortest Path)  
+- Personal Chatbot for Assistance  
+- F.I.R Generator
+
+### 🛡 Admin Features  
+- Admin Login System  
+- View Live SOS Alerts  
+- SOS Map View (Real-time Tracking)  
+- Alert Sound Notification (Siren + Vibration)  
+- Monitor Users  
+- Manage Complaints  
+- Dashboard Analytics  
+
+### 🔐 Security Features  
+- Password Hashing  
+- Session-Based Authentication  
+- XSS Protection  
+
+---
+
+## 🚀 Future Scope
+- Real-time Video Streaming during SOS
+- Wearable Device Integration (Smart Band)
+- Offline Emergency SMS System
+
+---
+
 ## ⭐ Support
 If you found this project helpful, consider giving it a star ⭐ on GitHub!

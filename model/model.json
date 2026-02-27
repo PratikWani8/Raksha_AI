@@ -1,0 +1,33 @@
+{
+    "format": "layers-model", 
+    "generatedBy": "manual", 
+    "convertedBy": "manual", 
+    "modelTopology": 
+    {
+        "class_name": "Sequential", 
+        "config": {
+            "name": "sequential", 
+            "layers": [
+                {
+                "class_name": "Dense", 
+                "config": {
+                    "units": 1, 
+                    "activation": "sigmoid", 
+                    "use_bias": true, 
+                    "kernel_initializer": {
+                        "class_name": "Zeros", 
+                        "config": {}}, 
+                        "bias_initializer": {
+                            "class_name": "Zeros", 
+                            "config": {}}, 
+                            "input_shape": [2], 
+                            "name": "dense"}}]
+                    }
+                }, 
+                            "weightsManifest": [{"paths": ["group1-shard1of1.bin"], 
+                            "weights": [{"name": "dense/kernel", 
+                            "shape": [2, 1], "dtype": "float32"}, {
+                            "name": "dense/bias", 
+                            "shape": [1], 
+                            "dtype": "float32"}]}]
+}

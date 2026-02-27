@@ -198,7 +198,7 @@ let model;
 
 async function loadModel() {
     try {
-        model = await tf.loadLayersModel('model/model.json');
+        model = await tf.loadLayersModel('../model/model.json');
         console.log("AI Model Loaded");
     } catch {
         console.log("No AI model found, using fallback.");

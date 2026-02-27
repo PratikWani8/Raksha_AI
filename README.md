@@ -1,45 +1,38 @@
-# 🚨 Raksha – A.I based Smart Women Safety System
+## 📌 Project Title
 
-Raksha is an a.i based smart women safety platform designed to provide quick emergency support through SOS alerts, live location, and complaint management. The system allows users to send instant SOS requests that are monitored by administrators for rapid response.
-
----
-
-## 📌 Short Description
-
-Raksha helps users, especially women, to stay safe by enabling real-time emergency alerts, complaint reporting, and admin monitoring. It provides a secure and user-friendly interface for both users and administrators.
+**Raksha - AI Based Smart Women Safety System**
 
 ---
 
-## ✨ Features
+## 👨‍💻 Team Members
 
-### 👩 User Features
-- User Registration & Login
-- Shake-to-SOS
-- One Click SOS
-- Share Live Location
-- Nearby Police Stations
-- Report Complaints
-- View Complaint Status
-- Secure Logout System
+-   **Pratik Wani** 
+-   **Moiz Shaikh**
 
-### 🤖 A.I Features
-- A.I Powered Heatmap
-- Safest Route Navigation
-- Personal Chatbot
+---
 
-### 🛡 Admin Features
-- Admin Login System
-- View Live SOS Alerts
-- SOS Map View (Location Tracking)
-- Alert Sound Notification
-- Monitor Users
-- Manage Complaints
-- Dashboard Analytics
+## ❗ Problem Statement
 
-### 🔐 Security Features
-- Password Hashing
-- Session-Based Authentication
-- XSS Protection
+Women safety is a critical issue in modern society. In emergency
+situations, victims may not be able to call for help quickly due to
+panic, fear, or lack of access to resources. Traditional systems often
+lack real-time tracking, immediate response, and intelligent assistance.
+
+There is a need for a smart, AI-powered system that can provide instant
+help, automate complaint generation, and alert authorities with minimal
+user interaction.
+
+---
+
+## 💡 Solution Approach
+
+Raksha is designed as a smart web-based safety system that integrates
+Artificial Intelligence, Geolocation, and Real-Time Communication to
+provide immediate assistance.
+
+The system enables users to send SOS alerts, share live location, find
+nearby police stations, and generate complaints automatically. Admins
+can monitor SOS alerts in real-time and take quick action.
 
 ---
 
@@ -72,10 +65,52 @@ Raksha helps users, especially women, to stay safe by enabling real-time emergen
 - Geolocation API
 - Web Speech API
 
-### Algorithms
-- Haversine Algorithm - Distance Calculation
-- Linear Search - Nearest Location Finding
-- Graph Shortest Path - Routing Algorithm (A*)
+---
+
+## ⚙️ Installation Steps
+
+1.  Clone the repository\
+    git clone https://github.com/your-username/raksha.git
+
+2.  Move project to XAMPP `htdocs` folder
+    C:\xampp\htdocs\raksha
+
+3.  Start Apache and MySQL from XAMPP
+
+4.  Import database
+
+-   Open phpMyAdmin
+-   Create database `raksha`
+-   Import `raksha.sql` file
+
+5.  Configure database connection
+
+-   Open `config.php`
+-   Set your DB username and password
+
+---
+
+## ▶️ How to Run
+ ```bash
+1.  Start XAMPP (Apache + MySQL)
+
+2.  Open browser
+    http://localhost/raksha
+
+3.  Register/Login as user
+
+4.  Access admin panel
+    http://localhost/raksha/admin
+ ```   
+    
+---
+
+## 📦 Requirements
+
+### Software
+
+-   XAMPP / WAMP / LAMP
+-   Web Browser (Chrome Recommended)
 
 ---
 

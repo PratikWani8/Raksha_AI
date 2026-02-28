@@ -1,38 +1,12 @@
-## 📌 Project Title
+# 🚨 Raksha – A.I based Smart Women Safety System
 
-*Raksha - AI Based Smart Women Safety System*
-
----
-
-## 👨‍💻 Team Members
-
--   *Pratik Wani* 
--   *Moiz Shaikh*
+Raksha is an a.i based smart women safety platform designed to provide quick emergency support through SOS alerts, live location, and complaint management. The system allows users to send instant SOS requests that are monitored by administrators for rapid response.
 
 ---
 
-## ❗ Problem Statement
+## 📌 Short Description
 
-Women safety is a critical issue in modern society. In emergency
-situations, victims may not be able to call for help quickly due to
-panic, fear, or lack of access to resources. Traditional systems often
-lack real-time tracking, immediate response, and intelligent assistance.
-
-There is a need for a smart, AI-powered system that can provide instant
-help, automate complaint generation, and alert authorities with minimal
-user interaction.
-
----
-
-## 💡 Solution Approach
-
-Raksha is designed as a smart web-based safety system that integrates
-Artificial Intelligence, Geolocation, and Real-Time Communication to
-provide immediate assistance.
-
-The system enables users to send SOS alerts, share live location, find
-nearby police stations, and generate complaints automatically. Admins
-can monitor SOS alerts in real-time and take quick action.
+Raksha helps users, especially women, to stay safe by enabling real-time emergency alerts, complaint reporting, and admin monitoring. It provides a secure and user-friendly interface for both users and administrators.
 
 ---
 

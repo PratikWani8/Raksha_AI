@@ -62,7 +62,7 @@
 
   <div class="hero-left">
 
-    <div class="badge">💖 Trusted by 10,000+ Women</div>
+    <div class="badge">💖 Trusted by 2,000+ Women</div>
 
     <h1>
       Your Personal Smart<br>

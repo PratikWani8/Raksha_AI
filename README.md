@@ -26,6 +26,9 @@ Raksha helps users, especially women, to stay safe by enabling real-time emergen
 ### ML Model
 - Tensorflow js
 
+### Container
+- Docker
+
 ### Libraries
 - Leaflet
 - Chart.js

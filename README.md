@@ -1,13 +1,13 @@
 ## 📌 Project Title
 
-**Raksha - AI Based Smart Women Safety System**
+*Raksha - AI Based Smart Women Safety System*
 
 ---
 
 ## 👨‍💻 Team Members
 
--   **Pratik Wani** 
--   **Moiz Shaikh**
+-   *Pratik Wani* 
+-   *Moiz Shaikh*
 
 ---
 
@@ -67,50 +67,99 @@ can monitor SOS alerts in real-time and take quick action.
 
 ---
 
-## ⚙️ Installation Steps
+## ⚙️ Installation Steps (Docker Setup)
 
-1.  Clone the repository\
-    git clone https://github.com/your-username/raksha.git
+1. Clone the repository
 
-2.  Move project to XAMPP `htdocs` folder
-    C:\xampp\htdocs\raksha
 
-3.  Start Apache and MySQL from XAMPP
+git clone https://github.com/your-username/raksha.git
+cd raksha
 
-4.  Import database
 
--   Open phpMyAdmin
--   Create database `raksha`
--   Import `raksha.sql` file
+2. Install Docker Desktop
 
-5.  Configure database connection
+Download and install Docker from:
+https://www.docker.com/products/docker-desktop/
 
--   Open `config.php`
--   Set your DB username and password
+Make sure Docker is running before proceeding.
+
+---
+
+3. Configure Database Connection
+
+Open config/db.php and update:
+
+
+$host = "raksha_db";
+$user = "raksha_user";
+$password = "raksha_pass";
+$database = "raksha_ai";
+
+
+---
+
+4. Import Database (First Time Only)
+
+Open phpMyAdmin:
+
+
+http://localhost:8081
+
+
+Login:
+- Username: root
+- Password: root
+
+Steps:
+- Create database raksha_ai
+- Import raksha.sql
+
+---
+
+5. Start Docker Containers
+
+
+docker-compose up --build
+
+
+This will start:
+- PHP + Apache server
+- MySQL database
+- phpMyAdmin
 
 ---
 
 ## ▶️ How to Run
- ```bash
-1.  Start XAMPP (Apache + MySQL)
 
-2.  Open browser
-    http://localhost/raksha
+1. Start the containers
 
-3.  Register/Login as user
 
-4.  Access admin panel
-    http://localhost/raksha/admin
- ```   
-    
----
+docker-compose up
 
-## 📦 Requirements
 
-### Software
+2. Open the application
 
--   XAMPP / WAMP / LAMP
--   Web Browser (Chrome Recommended)
+
+http://localhost:8080
+
+
+3. Use the system
+
+- Register/Login as user
+- Send SOS alert
+- View Admin Panel
+
+4. Open Admin Panel
+
+
+http://localhost:8080/admin
+
+
+5. Open Database (phpMyAdmin)
+
+
+http://localhost:8081
+
 
 ---
 

@@ -35,5 +35,6 @@ services:
       PMA_HOST: raksha_db
       MYSQL_ROOT_PASSWORD: root
 
+
 volumes:
   db_data:

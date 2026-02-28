@@ -5,8 +5,6 @@ if (!isset($_SESSION['admin'])) {
     exit;
 }
 
-/* Fetch SOS data */
-
 $query = "
 
 SELECT 

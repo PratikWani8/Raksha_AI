@@ -62,7 +62,7 @@
 
   <div class="hero-left">
 
-    <div class="badge">💖 Trusted by 2,000+ Women</div>
+    <div class="badge"><i data-lucide="sparkles"></i>Raksha Won Best Solution Award at Pandora Hackathon 2k26</div>
 
     <h1>
       Your Personal Smart<br>
@@ -364,8 +364,10 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
+<script src="https://unpkg.com/lucide@latest"></script>
 <script>
+lucide.createIcons();
+
 document.addEventListener("DOMContentLoaded", function () {
 
   // First Slider 

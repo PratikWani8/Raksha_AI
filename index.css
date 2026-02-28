@@ -136,14 +136,31 @@ nav a.active {
 }
 
 .badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   background: #ffd6e5;
   color: #e91e63;
-  padding: 6px 15px;
-  border-radius: 25px;
-  font-size: 14px;
+  padding: 0.4em 1em;       
+  border-radius: 999px;
+  font-size: clamp(12px, 2vw, 14px);  
   font-weight: 600;
-  margin-bottom: 30px;
+  margin-bottom: 1.5rem;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.badge svg,
+.badge i {
+  width: clamp(14px, 2.5vw, 18px);
+  height: clamp(14px, 2.5vw, 18px);
+  stroke: currentColor;
+  flex-shrink: 0;   
+}
+
+.badge:hover {
+  transform: scale(1.05);
+  transition: 0.3s ease;
 }
 
 .hero h1 {

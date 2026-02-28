@@ -1,13 +1,13 @@
 ## 📌 Project Title
 
-**Raksha - AI Based Smart Women Safety System**
+*Raksha - AI Based Smart Women Safety System*
 
 ---
 
 ## 👨‍💻 Team Members
 
--   **Pratik Wani** 
--   **Moiz Shaikh**
+-   *Pratik Wani* 
+-   *Moiz Shaikh*
 
 ---
 
@@ -71,6 +71,7 @@ can monitor SOS alerts in real-time and take quick action.
 
 1. Clone the repository
 
+<<<<<<< HEAD
 ```
 git clone https://github.com/your-username/raksha.git
 cd raksha
@@ -90,11 +91,36 @@ Make sure Docker is running before proceeding.
 Open `config/db.php` and update:
 
 ```
+=======
+
+git clone https://github.com/your-username/raksha.git
+cd raksha
+
+
+2. Install Docker Desktop
+
+Download and install Docker from:
+https://www.docker.com/products/docker-desktop/
+
+Make sure Docker is running before proceeding.
+
+---
+
+3. Configure Database Connection
+
+Open config/db.php and update:
+
+
+>>>>>>> 5aa603d7ed8b34ff0dbc95dfccd5613369a9922d
 $host = "raksha_db";
 $user = "raksha_user";
 $password = "raksha_pass";
 $database = "raksha_ai";
+<<<<<<< HEAD
 ```
+=======
+
+>>>>>>> 5aa603d7ed8b34ff0dbc95dfccd5613369a9922d
 
 ---
 
@@ -102,25 +128,42 @@ $database = "raksha_ai";
 
 Open phpMyAdmin:
 
+<<<<<<< HEAD
 ```
 http://localhost:8081
 ```
+=======
+
+http://localhost:8081
+
+>>>>>>> 5aa603d7ed8b34ff0dbc95dfccd5613369a9922d
 
 Login:
 - Username: root
 - Password: root
 
 Steps:
+<<<<<<< HEAD
 - Create database `raksha_ai`
 - Import `raksha.sql`
+=======
+- Create database raksha_ai
+- Import raksha.sql
+>>>>>>> 5aa603d7ed8b34ff0dbc95dfccd5613369a9922d
 
 ---
 
 5. Start Docker Containers
 
+<<<<<<< HEAD
 ```
 docker-compose up --build
 ```
+=======
+
+docker-compose up --build
+
+>>>>>>> 5aa603d7ed8b34ff0dbc95dfccd5613369a9922d
 
 This will start:
 - PHP + Apache server
@@ -133,6 +176,7 @@ This will start:
 
 1. Start the containers
 
+<<<<<<< HEAD
 ```
 docker-compose up
 ```
@@ -160,6 +204,35 @@ http://localhost:8080/admin
 ```
 http://localhost:8081
 ```
+=======
+
+docker-compose up
+
+
+2. Open the application
+
+
+http://localhost:8080
+
+
+3. Use the system
+
+- Register/Login as user
+- Send SOS alert
+- View Admin Panel
+
+4. Open Admin Panel
+
+
+http://localhost:8080/admin
+
+
+5. Open Database (phpMyAdmin)
+
+
+http://localhost:8081
+
+>>>>>>> 5aa603d7ed8b34ff0dbc95dfccd5613369a9922d
 
 ---
 

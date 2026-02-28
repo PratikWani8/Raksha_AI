@@ -15,7 +15,7 @@ SELECT
     u.phone,
     s.location,
     s.message,
-    s.sent_at,
+    CONVERT_TZ(s.sent_at, '+00:00', '+05:30') AS sent_at,
     'Registered' AS type
 
 FROM emergency_sos s
@@ -31,7 +31,7 @@ SELECT
     NULL AS phone,
     n.location,
     n.message,
-    n.sent_at,
+    CONVERT_TZ(n.sent_at, '+00:00', '+05:30') AS sent_at,
     'Guest' AS type
 
 FROM non_reg_sos n

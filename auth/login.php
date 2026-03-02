@@ -4,7 +4,7 @@ include("../config/db.php");
 if (isset($_POST['login'])) {
 
     //  Cloudflare Turnstile verification
-    $secretKey = "0x4AAAAAACg_Y0W0WeAgRQ5XUYDw94iunH0";
+    $secretKey = "";
     $token = $_POST['cf-turnstile-response'] ?? '';
 
     if (empty($token)) {
@@ -200,7 +200,7 @@ if (isset($_POST['login'])) {
         <input type="password" name="password" placeholder="Enter password" required>
 
         <!--  Turnstile -->
-        <div class="cf-turnstile" data-sitekey="0x4AAAAAACg_Y_w7k6DVmCcq"></div>
+        <div class="cf-turnstile" data-sitekey=""></div>
 
         <button type="submit" name="login">Login</button>
 

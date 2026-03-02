@@ -62,7 +62,7 @@
 
   <div class="hero-left">
 
-    <div class="badge"><i data-lucide="sparkles"></i>Raksha Won Best Solution Award at Pandora Hackathon 2k26</div>
+    <div class="badge"><i data-lucide="sparkles"></i>Won Best Solution Award at Pandora Hackathon 2k26</div>
 
     <h1>
       Your Personal Smart<br>

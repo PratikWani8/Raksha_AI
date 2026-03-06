@@ -126,7 +126,6 @@ foreach ($data as $row) {
 
 <script>
 
-// Map Setup
 var map = L.map('map').setView([18.5204, 73.8567], 12);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -245,7 +244,6 @@ function checkUserRisk(lat, lng){
   }
 }
 
-// User Tracking
 let userMarker;
 
 if(navigator.geolocation){

@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-$host = "raksha_db";       // Docker container name
-$user = "raksha_user";     // from docker-compose
-$pass = "raksha_pass";     // from docker-compose
-$db   = "raksha_ai";       // from docker-compose
+$host="raksha_db";
+$user="raksha_user";
+$pass="raksha_pass";
+$db="raksha_ai";
 
 $conn = new mysqli($host, $user, $pass, $db);
 
